@@ -17,9 +17,6 @@ inputs:
     description: "Github Repo token"
     required: false
     default: ''
-  repository:
-    description: "Repository to publish on"
-    required: true
 outputs:
   tag:
     description: "Tag that was published"
@@ -39,5 +36,5 @@ runs:
         echo "VERSION=$VERSION" >> $GITHUB_ENV
       shell: bash
     - id: publish
-      run: ${{ github.action_path }}/src/publish.sh $VERSION ${{ inputs.docker_compose }} ${{ inputs.repo_token }} ${{ inputs.repository }}
+      run: ${{ github.action_path }}/src/publish.sh $VERSION ${{ inputs.docker_compose }} ${{ inputs.repo_token }}
       shell: bash
